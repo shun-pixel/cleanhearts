@@ -15,6 +15,13 @@
 <meta property="og:url" content="https://cleanhearts.jp/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://cleanhearts.jp/">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PG9F8SWY12"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments)}
+gtag('js',new Date());
+gtag('config','G-PG9F8SWY12');
+</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2230%22%20fill%3D%22%230a8fc4%22/%3E%3Cpath%20d%3D%22M46%2020%20A17%2017%200%201%200%2046%2044%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M45%2039.5%20C%2041%2036.5%2038.5%2034%2038.5%2031%20C%2038.5%2029%2040%2027.5%2042%2027.5%20C%2043.3%2027.5%2044.4%2028.3%2045%2029.3%20C%2045.6%2028.3%2046.7%2027.5%2048%2027.5%20C%2050%2027.5%2051.5%2029%2051.5%2031%20C%2051.5%2034%2049%2036.5%2045%2039.5Z%22%20fill%3D%22%23ffb81f%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -711,7 +718,7 @@ footer{padding-block:44px 28px;font-size:.85rem;color:var(--ink-soft);background
       </address>
     </div>
     <nav class="ft-nav" aria-label="フッターメニュー">
-      <a href="#reason">選ばれる理由</a><a href="#price">料金</a><a href="#greeting">代表プロフィール</a><a href="#flow">作業の流れ</a><a href="#faq">よくある質問</a><a href="#company">店舗情報</a>
+      <a href="#reason">選ばれる理由</a><a href="#price">料金</a><a href="#greeting">代表プロフィール</a><a href="#flow">作業の流れ</a><a href="#faq">よくある質問</a><a href="#company">店舗情報</a><a href="privacy.html">プライバシーポリシー</a>
     </nav>
     <p class="ft-copy">© 2026 Clean Hearts</p>
   </div>
@@ -727,6 +734,16 @@ document.querySelectorAll('.copy').forEach(function(b){
     function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById(b.dataset.target));var sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent='選択しました'}
     try{navigator.clipboard.writeText(b.dataset.copy).then(done,fallback)}catch(e){fallback()}
   });
+});
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href]');
+  if(!a||typeof gtag!=='function')return;
+  var href=a.getAttribute('href')||'';
+  var eventName='';
+  if(href.indexOf('https://lin.ee/')===0)eventName='line_click';
+  else if(href.indexOf('tel:')===0)eventName='phone_click';
+  else if(href.indexOf('mailto:')===0)eventName='email_click';
+  if(eventName)gtag('event',eventName,{link_url:href,link_text:(a.textContent||'').trim().slice(0,100)});
 });
 </script>
 </body>
